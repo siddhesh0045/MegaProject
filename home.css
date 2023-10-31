@@ -267,7 +267,7 @@ body{
 /* hero-section */
 
 /* backround image */
-.background-image {
+/* .background-image {
     background-image: url('carParkingImage.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -278,7 +278,7 @@ body{
     width: 100%;
     height: 100%;
     z-index: -1;
-  }
+  } */
   
 
 
@@ -287,6 +287,8 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    
+
     height: 100vh; /* This will center it vertically within the viewport height */
   }
-  
+ 

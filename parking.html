@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parking Slots</title>
+    <style>
+        .parking-slot {
+            width: 50px;
+            height: 50px;
+            display: inline-block;
+            margin: 5px;
+            cursor: pointer;
+            text-align: center;
+            line-height: 50px;
+            font-weight: bold;
+        }
+
+        .available {
+            background-color: red;
+            color: white;
+        }
+
+        .booked {
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Parking Slots</h1>
+    
+    <div id="parkingSlots">
+        <!-- Create parking slots dynamically using JavaScript -->
+    </div>
+
+    <script>
+        // Sample parking slot data (You can replace this with real data)
+        const parkingSlotsData = [
+            { id: 1, booked: false },
+            { id: 2, booked: true },
+            { id: 3, booked: false },
+            { id: 4, booked: true },
+            // Add more parking slots as needed
+        ];
+
+        const parkingSlotsContainer = document.getElementById("parkingSlots");
+
+        // Function to create parking slot elements
+        function createParkingSlot(slot) {
+            const parkingSlot = document.createElement("div");
+            parkingSlot.className = `parking-slot ${slot.booked ? "booked" : "available"}`;
+            parkingSlot.textContent = slot.id; // Display the ID as text
+
+            parkingSlot.addEventListener("click", function() {
+                // Toggle the slot's availability when clicked
+                slot.booked = !slot.booked;
+                parkingSlot.className = `parking-slot ${slot.booked ? "booked" : "available"}`;
+            });
+
+            parkingSlotsContainer.appendChild(parkingSlot);
+        }
+
+        // Create parking slots based on the data
+        parkingSlotsData.forEach(slot => {
+            createParkingSlot(slot);
+        });
+    </script>
+</body>
+</html>
