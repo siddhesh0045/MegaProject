@@ -126,6 +126,14 @@
         </div>
     </div>
 
+    <div class="time-selection">
+        <label for="startTime">Select Starting Time:</label>
+        <input type="time" id="startTime" name="startTime" required>
+
+        <label for="endTime">Select Ending Time:</label>
+        <input type="time" id="endTime" name="endTime" required>
+    </div>
+
     <button class="UserButtons" id="bookButton" onclick="bookSeats()">Book Selected Slots</button>
 
     <button class="UserButtons" id="openImageButton">Open Actual View Of Parking</button>
@@ -138,6 +146,7 @@
         </div>
     </div>
 
+    <a href="payment.html">Link to redirect next page</a>
     <script>
         // Define the number of rows and seats per row
         const numRows = 5;
@@ -179,19 +188,23 @@
             }
         }
 
-        // Function to handle the booking of selected seats
-        function bookSeats() {
-            const selectedSeats = document.querySelectorAll(".seat.selected");
-            if (selectedSeats.length === 0) {
-                alert("Please select at least one seat.");
-            } else {
-                for (const seat of selectedSeats) {
-                    seat.classList.remove("selected");
-                    seat.classList.add("reserved");
-                }
-                alert("Seats booked successfully!");
+      function bookSeats() {
+        const selectedSeats = document.querySelectorAll(".seat.selected");
+        const startTime = document.getElementById("startTime").value;
+        const endTime = document.getElementById("endTime").value;
+
+        if (selectedSeats.length === 0) {
+            alert("Please select at least one seat.");
+        } else if (!startTime || !endTime) {
+            alert("Please select both starting and ending times.");
+        } else {
+            for (const seat of selectedSeats) {
+                seat.classList.remove("selected");
+                seat.classList.add("reserved");
             }
+            alert(`Seats booked successfully! Time: ${startTime} to ${endTime}`);
         }
+    }
 
         // Function to open the image modal
         const openImageButton = document.getElementById("openImageButton");

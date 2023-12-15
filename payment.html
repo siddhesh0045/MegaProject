@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .details {
+            margin-top: 20px;
+        }
+
+        .details label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .details span {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .cost {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .cost h3 {
+            color: #333;
+        }
+
+        .cost p {
+            font-size: 24px;
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Parking Details</h1>
+    </header>
+
+    <div class="container">
+
+        <div class="details" id="pdfContent">
+            <h2>Selected Parking Details</h2>
+
+            <div class="details">
+                <label>Parking Area:</label>
+                <span id="parkingArea">SFC Mall</span>
+
+                <label>Parking Space:</label>
+                <span id="parkingSpace">A12</span>
+
+                <label>Total Time:</label>
+                <span id="totalTime">2 hours</span>
+            </div>
+
+            <div class="cost">
+                <h3>Final Cost</h3>
+                <p>RS 150.00</p>
+            </div>
+        </div>
+
+        <button onclick="confirmBooking()">Confirm Booking</button>
+        
+        <button onclick="downloadReceipt()">Download Receipt</button>
+
+    </div>
+
+    <script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+
+    <script>
+        function confirmBooking() {
+            // Add your logic for confirming the booking, such as sending data to the server.
+            // alert('Booking confirmed! Thank you.');
+            window.location.href = 'thanks.html';
+        }
+
+        function downloadReceipt() {
+            // Use html2pdf.js to generate a PDF from the selected content
+            var element = document.getElementById('pdfContent');
+            html2pdf(element);
+        }
+    </script>
+
+</body>
+</html>
